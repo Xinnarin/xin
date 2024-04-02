@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Exploration</title>
+  <link rel="stylesheet" href="pokemon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap">
+  <style>
+    .p8h1:hover {
+      color: red;
+      cursor: pointer;
+      animation: zoomIn 1s ease-in-out; /
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.7);
+      }
+    }
+
+    .p8h3:hover {
+      color: blue;
+    }
+
+    .p8h4:hover {
+      background-image: linear-gradient(to right, silver, violet);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .p8h5:hover {
+      color: red;
+    }
+
+    .p8h6:hover {
+      color: red;
+    }
+
+    #metagross:hover,
+    #metagross-evo:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+      animation: shine 1s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        filter: brightness(1);
+      }
+
+      50% {
+        filter: brightness(1.5);
+      }
+
+      100% {
+        filter: brightness(1);
+      }
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      color: #333;
+      font-family: 'Silkscreen', sans-serif;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      top: 90%; /* Adjust the top position as needed */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, 0); /* Center horizontally */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="blackbg">
+
+    <header>
+      <h1 class="p8h1" id="metagrossName">METAGROSS</h1>
+      <h3 class="p8h3">#0376</h3>
+      <h4 class="p8h4">STEEL/PSYCHIC</h4>
+      <h5 class="p8h5">Genaration 3</h5>
+      <h6 class="p8h6">Evolution:</h6>
+      <a href="homepage.html" class="back-button">Back</a>
+    </header>
+  </div>
+  <img src="images/metagross.png" alt="metagross" id="metagross">
+  <img src="images/metagross-evo.png" alt="metagross-evo" id="metagross-evo">
+
+  <div class="tooltip" id="metagrossTooltip">
+    Metagross is a Steel/Psychic-type Pokémon known for its high intelligence and powerful psychic abilities.
+  </div>
+
+  <script>
+    var metagrossName = document.getElementById('metagrossName');
+    var metagrossTooltip = document.getElementById('metagrossTooltip');
+
+    metagrossName.addEventListener('click', function() {
+      this.style.color = 'grey';
+      showTooltip();
+      Action();
+    });
+
+    function Action() {
+      alert('Metagross has changed to color Grey!');
+    }
+
+    function showTooltip() {
+      metagrossTooltip.style.display = 'block';
+      setTimeout(function() {
+        metagrossTooltip.style.display = 'none';
+      }, 5000); 
+    }
+  </script>
+</body>
+
+</html>
