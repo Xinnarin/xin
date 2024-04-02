@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Exploration</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0"></script>
+  
+ <style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+
+</head>
+
+<body>
+
+  <div>
+    <header>
+      <h1>Welcome to Pokémon Exploration!</h1>
+      <p>Embark on a journey filled with mysterious creatures, epic characters, and the thrill of discovery.<br> Whether you're a seasoned Trainer or a curious newcomer, this is your gateway to the Pokémon universe.</p>
+      <form action="page1.html" method="get" id="signInForm">
+        <input class='username' type='text' name='username' placeholder='Enter Username' required>
+        <button class="button" type="button" onclick="signIn()">Sign In </button>
+        <div class="loading" id="loading" style="display: none;">
+          <div class="spinner"></div>
+        </div>
+      </form>
+    </header>
+  </div>
+
+  <script>
+  
+    anime({
+      targets: 'header',
+      translateY: [-20, 0],
+      opacity: [0, 1],
+      duration: 1500,
+      easing: 'easeInOutQuad'
+    });
+
+    anime({
+      targets: '.username',
+      translateX: [-20, 0],
+      opacity: [0, 1],
+      delay: 500,
+      duration: 1500,
+      easing: 'easeInOutQuad'
+    });
+
+    anime({
+      targets: '.button',
+      translateX: [20, 0],
+      opacity: [0, 1],
+      delay: 1000,
+      duration: 1500,
+      easing: 'easeInOutQuad'
+    });
+
+    function signIn() {
+      
+      document.querySelector('.button').disabled = true;
+      document.getElementById('loading').style.display = 'flex';
+
+      // Animate for 5 seconds before redirecting
+      setTimeout(function () {
+   
+        var username = document.querySelector('.username').value;
+
+        
+        window.location.href = 'page1.html?username=' + encodeURIComponent(username);
+      }, 3000);
+    }
+  </script>
+
+</body>
+
+</html>
